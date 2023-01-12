@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>20. Valid Parentheses</title>
+    </head>
+
+    <body>
+    </body>
+    <script>
+        // conditions for validation : 1) closed by the same brackets 2) in the correct order. 3) every bracket is closed by bracket of the same type.
+        /**
+     * @param {string} s
+     * @return {boolean}
+     */
+        const isValid = function (s) {
+            for (let i = 0; i < s.length; i++) {
+                if (s[i] === "(" && s[i + 1] === ")" || s[i] === "[" && s[i + 1] === "]" || s[i] === "{" && s[i + 1] === "}") {
+                    i++;
+                    if (i === s.length - 1) {
+                        console.log(true);
+                        return true;
+                    }
+                } else {
+                    console.log(false);
+                    return false;
+                }
+            }
+
+        };
+
+        const s = "()[]{}[]"
+        isValid(s);
+
+        // const s = "{[]}" -> how to solve this?
+
+        // Input: s = "()"
+        // Output: true
+        // Input: s = "()[]{}"
+        // Output: true
+        // Input: s = "(]"
+        // Output: false
+    </script>
+
+</html>

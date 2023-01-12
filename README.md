@@ -6,7 +6,7 @@
 | --- | --- |
 | 20   | Valid Parentheses | Easy       |           |
 
-| No. | Name | Right-aligned |
-| :---         |  :---     |          ---: |
-| 20   | Valid Parentheses | git status    |
+| No. | Name | Difficulty |
+| :---         |  :---     |  :--- |
+| 20   | Valid Parentheses | Easy    |
 | git diff     | git diff       | git diff      |

@@ -12,30 +12,52 @@
     </body>
     <script>
         // conditions for validation : 1) closed by the same brackets 2) in the correct order. 3) every bracket is closed by bracket of the same type.
+        // to meet the conditions : 1) even number 2) symmetry
         /**
      * @param {string} s
      * @return {boolean}
      */
+        // code 1) fail 
+        // fail code whnen testcase is s = "{[]}"
+        // const isValid = function (s) {
+        //     for (let i = 0; i < s.length; i++) {
+        //         if (s[i] === "(" && s[i + 1] === ")" || s[i] === "[" && s[i + 1] === "]" || s[i] === "{" && s[i + 1] === "}") {
+        //             i++;
+        //             if (i === s.length - 1) {
+        //                 console.log(true);
+        //                 return true;
+        //             }
+        //         } else {
+        //             console.log(false);
+        //             return false;
+        //         }
+        //     }
+
+        // };
+
+        // code 2) 
         const isValid = function (s) {
-            for (let i = 0; i < s.length; i++) {
-                if (s[i] === "(" && s[i + 1] === ")" || s[i] === "[" && s[i + 1] === "]" || s[i] === "{" && s[i + 1] === "}") {
-                    i++;
-                    if (i === s.length - 1) {
-                        console.log(true);
-                        return true;
+            if (s.length % 2 == 0) {
+                let firstHalf = (s.length / 2) - 1;
+                let secondHalf = s.length / 2;
+                // console.log(firstHalf, secondHalf)
+                for (let i = firstHalf; i >= 0; i--) {
+                    for (let j = secondHalf; j < s.length - 1; j++) {
+                        console.log(s[i], s[j])
                     }
-                } else {
-                    console.log(false);
-                    return false;
                 }
+
+            } else {
+                console.log("false")
+                return false;
             }
 
-        };
+        }
 
-        const s = "()[]{}[]"
+        s = "()[]{}";
+        // s = "()";
+
         isValid(s);
-
-        // const s = "{[]}" -> how to solve this?
 
         // Input: s = "()"
         // Output: true
@@ -43,6 +65,9 @@
         // Output: true
         // Input: s = "(]"
         // Output: false
+        // const s = "{[]}"
+        // Output: true
+
     </script>
 
 </html>

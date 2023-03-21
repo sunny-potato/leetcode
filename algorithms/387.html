@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>387. First unique character in a string</title>
+    </head>
+
+    <body>
+        <script>
+            //Constraints:
+            // 1 <= s.length <= 105
+            // s consists of only lowercase English letters.
+
+            // Description: 
+            // Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+
+            //   @param {string} s
+            //   @return {number}
+
+
+
+            let firstUniqChar = function (s) {
+
+                let arrayS = s.split("");
+                const result = arrayS.filter((elem, index, array) => array.indexOf(elem) === array.lastIndexOf(elem)) // get only no-reapting character as array 
+                if (result.length === 0) {
+                    return -1
+                } else {
+                    return s.indexOf(result[0])
+                }
+
+            };
+
+            const s = "ssunshee"
+            firstUniqChar(s);
+
+            // 1) map, find => work with array, not string
+            // 2) for..of vs for..in
+            // -> for..of : returns each value
+            // -> for..in : returns each index
+            // 3) covert string into array
+            // -> split("") ex) s.split("")
+            // -> [...string] ex) [...s]
+
+            // array.prototype.indexOf() : return the first index at which a given element can be found in the array or -1
+            // array.prototype.lastIndexOf() : return the last index at which a given element can be found in the array or -1
+
+        </script>
+    </body>
+
+</html>

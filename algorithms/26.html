@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>26. Remove duplicates from sorted array</title>
+    </head>
+
+    <body>
+        <script>
+            /**
+         * @param {number[]} nums
+         * @return {number}
+         */
+            nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+            let removedNums = [];
+            let countDuplication = 0;
+            var removeDuplicates = function (nums) {
+                for (i = 0; i < nums.length; i++) {
+                    const isIncluded = removedNums.includes(nums[i])
+                    if (!isIncluded) {
+                        removedNums.push(nums[i])
+                        console.log(nums.slice(i + 1, i - 1))
+                        // console.log(nums);
+                    }
+                    else { countDuplication++; }
+                }
+                // const returnValue = removedNums.length;
+                // for (j = 0; j < countDuplication; j++) {
+                //     removedNums.push("_");
+                // }
+                // nums = removedNums;
+                // return returnValue;
+            };
+            removeDuplicates(nums);
+
+// Input: nums = [1,1,2]
+// Output: 2, nums = [1,2,_]
+// Input: nums = [0,0,1,1,1,2,2,3,3,4]
+// Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>821. Shortest distance to a character</title>
+    </head>
+
+    <body>
+        <script>
+            // Constraints:
+            // 1 <= s.length <= 104
+            // s[i] and c are lowercase English letters.
+            // It is guaranteed that c occurs at least once in s.
+
+            // Discription
+            //Given a string s and a character c that occurs in s, return an array of integers answer where answer.length == s.length and answer[i] is the distance from index i to the closest occurrence of character c in s.
+            // The distance between two indices i and j is abs(i - j), where abs is the absolute value function.
+            /**
+         * @param {string} s
+         * @param {character} c
+         * @return {number[]}
+         */
+
+            // flow chart
+            // 1) find the value of c in s as index  = get array of selectedindex from s -> X
+            // 2) loop selectedindex's indices one by one 
+            // ex) the closest occurence of the c's value for index 0 in answer is 3 
+            // 3) decide what is the closest occurrence of the c's value for each index 
+            // 4) calculate the distance : abs(answer's - the closest index)
+
+
+            let shortestToChar = function (s, c) {
+                let answer = [];
+                let selectedIndex = [];
+                for (index in s) {
+                    if (s[index] === c) {
+                        selectedIndex.push(Number(index));
+                    }
+                }
+                // console.log(answer, selectedIndex)
+                for (index in selectedIndex) {
+                    let currentIndex = selectedIndex[index];
+                    let nextIndex = selectedIndex[Number(index) + 1]; //or undefined
+                    let indexControl;
+                    for (index in s) {
+                        // console.log(index)
+                        if (nextIndex !== undefined) {
+                            let indexInAnswer = Number(index)
+                            const distanceToCurrentIndex = Math.abs(currentIndex - indexInAnswer);
+                            const distanceToNextIndex = Math.abs(nextIndex - indexInAnswer);
+                            console.log(distanceToCurrentIndex, currentIndex, indexInAnswer);
+                            console.log("(!)", distanceToNextIndex, nextIndex, indexInAnswer);
+                            if (distanceToCurrentIndex <= distanceToNextIndex) {
+                                // console.log("soooo", distanceToCurrentIndex, currentIndex, indexInAnswer);
+                                answer.push(distanceToCurrentIndex)
+                            } else {
+                                // console.log("soooo", distanceToNextIndex, currentIndex, indexInAnswer);
+                                answer.push(distanceToNextIndex)
+                            }
+                        }
+                    }
+                }
+
+                console.log(answer);
+
+            };
+
+            const s = "loveleetcode";
+            const c = "e";
+            shortestToChar(s, c)
+
+// Input: s = "loveleetcode", c = "e"
+// Output: [3,2,1,0,1,0,0,1,2,2,1,0]
+// Explanation: The character 'e' appears at indices 3, 5, 6, and 11 (0-indexed).
+// The closest occurrence of 'e' for index 0 is at index 3, so the distance is abs(0 - 3) = 3.
+// The closest occurrence of 'e' for index 1 is at index 3, so the distance is abs(1 - 3) = 2.
+//The closest occurrence of 'e' for index 2  is at index 3,  so the distance is abs(2 - 3) = 1.
+// For index 4, there is a tie between the 'e' at index 3 and the 'e' at index 5, but the distance is still the same: abs(4 - 3) == abs(4 - 5) = 1.
+// The closest occurrence of 'e' for index 8 is at index 6, so the distance is abs(8 - 6) = 2.
+
+// Input: s = "aaab", c = "b"
+// 1) find the value of c in s as index  -> index  3
+// 2) loop answer's index one by one 
+// ex) the closest occurence of the c's value for index 0 in answer is 3 
+// 3) check what is the closest occurrence of the c's value for each index 
+// 4) calculate the distance : abs(answer's - the closest index)
+// Output: [3,2,1,0]
+
+        </script>
+    </body>
+
+</html>

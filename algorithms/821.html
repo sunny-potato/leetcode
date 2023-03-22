@@ -16,61 +16,40 @@
             // It is guaranteed that c occurs at least once in s.
 
             // Discription
-            //Given a string s and a character c that occurs in s, return an array of integers answer where answer.length == s.length and answer[i] is the distance from index i to the closest occurrence of character c in s.
+            // Given a string s and a character c that occurs in s, return an array of integers answer where answer.length == s.length and answer[i] is the distance from index i to the closest occurrence of character c in s.
             // The distance between two indices i and j is abs(i - j), where abs is the absolute value function.
-            /**
-         * @param {string} s
-         * @param {character} c
-         * @return {number[]}
-         */
 
-            // flow chart
-            // 1) find the value of c in s as index  = get array of selectedindex from s -> X
-            // 2) loop selectedindex's indices one by one 
-            // ex) the closest occurence of the c's value for index 0 in answer is 3 
-            // 3) decide what is the closest occurrence of the c's value for each index 
-            // 4) calculate the distance : abs(answer's - the closest index)
+            // @param {string} s
+            // @param {character} c
+            // @return {number[]}
+
 
 
             let shortestToChar = function (s, c) {
-                let answer = [];
-                let selectedIndex = [];
+                selectedIndex = [];
                 for (index in s) {
                     if (s[index] === c) {
                         selectedIndex.push(Number(index));
                     }
                 }
-                // console.log(answer, selectedIndex)
-                for (index in selectedIndex) {
-                    let currentIndex = selectedIndex[index];
-                    let nextIndex = selectedIndex[Number(index) + 1]; //or undefined
-                    let indexControl;
-                    for (index in s) {
-                        // console.log(index)
-                        if (nextIndex !== undefined) {
-                            let indexInAnswer = Number(index)
-                            const distanceToCurrentIndex = Math.abs(currentIndex - indexInAnswer);
-                            const distanceToNextIndex = Math.abs(nextIndex - indexInAnswer);
-                            console.log(distanceToCurrentIndex, currentIndex, indexInAnswer);
-                            console.log("(!)", distanceToNextIndex, nextIndex, indexInAnswer);
-                            if (distanceToCurrentIndex <= distanceToNextIndex) {
-                                // console.log("soooo", distanceToCurrentIndex, currentIndex, indexInAnswer);
-                                answer.push(distanceToCurrentIndex)
-                            } else {
-                                // console.log("soooo", distanceToNextIndex, currentIndex, indexInAnswer);
-                                answer.push(distanceToNextIndex)
-                            }
-                        }
+
+                const result = [];
+                for (index in s) {
+                    let minValue = 1000;
+                    for (i in selectedIndex) {
+                        minValue = Math.min(minValue, Math.abs(selectedIndex[i] - Number(index)))
                     }
+                    result.push(minValue)
+
                 }
 
-                console.log(answer);
-
+                return result;
             };
 
             const s = "loveleetcode";
             const c = "e";
             shortestToChar(s, c)
+
 
 // Input: s = "loveleetcode", c = "e"
 // Output: [3,2,1,0,1,0,0,1,2,2,1,0]
@@ -88,6 +67,10 @@
 // 3) check what is the closest occurrence of the c's value for each index 
 // 4) calculate the distance : abs(answer's - the closest index)
 // Output: [3,2,1,0]
+
+// Math.min(value0, value1, ..., valueN) : return the smallest of the numbers
+
+
 
         </script>
     </body>

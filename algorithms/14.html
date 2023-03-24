@@ -5,16 +5,62 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>14. Longest Common Prefix</title>
     </head>
 
     <body>
         <script>
-            const strs = ["flower", "flow", "flight"]
+            // Constraints:
+            // 1 <= strs.length <= 200
+            // 0 <= strs[i].length <= 200
+            // strs[i] consists of only lowercase English letters.
+
+            // Description : 
+            // Write a function to find the longest common prefix string amongst an array of strings.
+            // If there is no common prefix, return an empty string "".
+
+            /**
+             * @param {string[]} strs
+             * @return {string}
+             */
+
+
+            const strs = ["flower", "flower", "flower", "flower"]
+            // const strs = ["flower", "flow", "flight"]
+            // const strs = ["dog", "racecar", "car"];
+            // const strs = ["", ""]
+            // const strs = [""]
+
             const longestCommonPrefix = function (strs) {
+                if (strs.length > 1 && strs[0].length !== 0) {
+                    let prefix = "";
+                    for (index in strs[0]) {
+                        const foundCommonPrefix = strs.every((str) => str[index] === strs[0][index])
+                        if (foundCommonPrefix) {
+                            prefix += strs[0][index];
+                        } else {
+                            break;
+                        }
+                    }
+                    console.log(prefix)
+                    return prefix
+                } else {
+                    return strs[0]
+                }
             };
 
             longestCommonPrefix(strs);
+
+            // Input: strs = ["flower", "flow", "flight"]
+            // Output: "fl"
+            // Input: strs = ["dog", "racecar", "car"]
+            // Output: ""
+            // Explanation: There is no common prefix among the input strings.
+
+
+            // every((element, index, array) => { /* … */ })
+            // :return a boolean value after testing whether all elements in the array pass the test implemented by the provided function
+            // break : terminates the current loop, switch..
         </script>
     </body>
 

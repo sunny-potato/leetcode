@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>28. Find the Index of the First Occurrence in a String</title>
+    </head>
+
+    <body>
+        <script>
+            // Description
+            // Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+            // Constraints:
+            // 1 <= haystack.length, needle.length <= 104
+            // haystack and needle consist of only lowercase English characters.
+            /**
+             * @param {string} haystack
+             * @param {string} needle
+             * @return {number}
+             */
+
+            let strStr = function (haystack, needle) {
+                return haystack.includes(needle) ? haystack.indexOf(needle) : -1;
+
+            };
+
+
+            const haystack = "sadbutsad"
+            const needle = "sad"
+            strStr(haystack, needle);
+
+            // Example 1:
+            // Input: haystack = "sadbutsad", needle = "sad"
+            // Output: 0
+            // Explanation: "sad" occurs at index 0 and 6.
+            // The first occurrence is at index 0, so we return 0.
+            // Example 2:
+            // Input: haystack = "leetcode", needle = "leeto"
+            // Output: -1
+            // Explanation: "leeto" did not occur in "leetcode", so we return -1.
+
+            // includes() : return boolean value if a given word in string found, true. else if not found, false
+            // indexOf() : return the first index of a given word found in string
+
+        </script>
+    </body>
+
+</html>
